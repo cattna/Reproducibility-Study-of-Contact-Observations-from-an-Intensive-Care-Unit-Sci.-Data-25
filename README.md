@@ -3,7 +3,7 @@ This repository contains a reproducibility study and analytical extension of the
 
 The project analyzes Ultra-Wideband (UWB) sensor data to model spatio-temporal interaction patterns among healthcare professionals in a Medical Intensive Care Unit (MICU), with the goal of identifying potential transmission pathways for Healthcare-Associated Infections (HAIs).
 
-🔗 **https://www.nature.com/articles/s41597-025-05249-5:**
+🔗 **https://www.nature.com/articles/s41597-025-05249-5:** 
 
 ---
 
