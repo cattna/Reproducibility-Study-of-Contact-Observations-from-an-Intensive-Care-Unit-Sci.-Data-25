@@ -52,3 +52,8 @@ Traditional contact network analysis represents interactions as pairwise edges b
   Exposure risk rankings and spatial hotspots remain consistent across **10–11 of the 14 analyzed shifts**, indicating that risk is largely structural rather than stochastic.
 
 ---
+
+## Citation
+Vu, Hieu; Herman, Ted; Struble, Roger; Adhikari, Bijaya; Polgreen, Philip M. (2025).  
+**Contact Observations from an Intensive Care Unit - Supplementary**. figshare. Dataset.  
+[https://doi.org/10.6084/m9.figshare.28826414.v3](https://doi.org/10.6084/m9.figshare.28826414.v3)
