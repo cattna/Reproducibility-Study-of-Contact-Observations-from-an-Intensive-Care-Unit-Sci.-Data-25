@@ -1,48 +1,54 @@
-Data (under `data` folder): 
-    - File `fulldata.xz` was manually created by running python scripts using the
-        Instant-Trace API to collect records, then catenating all of these into
-        fulldata, and finally running xz to compress.  Each record in fulldata 
-        is the raw detection from the Instant-Trace database
+This repository contains a reproducibility study and analytical extension of the dataset  
+**“Contact Observations from an Intensive Care Unit”** (*Nature Scientific Data*, 2025).
 
-    - Folder `contact_intervals` has the contact intervals derived from fulldata. 
-    
-    - Folder `histories` has the histories derived from contact intervals. 
-        Each history is a list of contact intervals for a shift.
+The project analyzes Ultra-Wideband (UWB) sensor data to model spatio-temporal interaction patterns among healthcare professionals in a Medical Intensive Care Unit (MICU), with the goal of identifying potential transmission pathways for Healthcare-Associated Infections (HAIs).
 
-Supplementary materials (under `supp` folder): 
-    - File `badgelocation.xlsx` has the notes entered during the deployment.
+🔗 **https://www.nature.com/articles/s41597-025-05249-5:**
 
-    - File `placement005.yaml` has pixel coordinates of all
-        the anchors with respect to `iculayout.png`. 
+---
 
+## Project Overview
 
-Figures (under `figures` folder):
-    - Figure `iculayout.png` was derived from CAD files of the MICU architecture. 
+This work reproduces the original data processing pipeline and extends the analysis by incorporating higher-order interaction modeling. Raw proximity signals are transformed into fine-grained, time-resolved contact histories, enabling both individual-level and group-level exposure analysis.
 
+Unlike traditional pairwise contact networks, this project adopts a **dynamic hypergraph framework** to represent multi-person clinical interactions such as medical rounds, team-based procedures, and shared equipment usage.
 
-Code (under `code` folder):
-    - Module `extractspread.py` parses the spreadsheet to know what are anchors 
-        in patient rooms, etc. 
+---
 
-    - Module `make_intervals.py` reads fulldata and constructs a contact 
-        interval for a shift; saving each shift's contact intervals in the directory 
-        `data/contact_intervals`, in compressed form. 
-        To run this module: `python code/make_intervals.py`
+## Methodological Contributions
 
-    - Module `make_history.py` contains code to create a history for each shift, 
-        saving the result in the `data/histories`, in compressed form.
-        To run this module: `python code/make_histories.py` (required to run module
-        `make_intervals.py` first)
+- **Automated Data Processing Pipeline**  
+  Reproduction of the original preprocessing workflow to generate **1-second–resolution imputed contact histories** across **14 full MICU shifts**.
 
-    - Notebook `IowaMICU2023.ipynb` documents running `code/hcplist.py`, which demonstrates
-        ways of counting badges in each shift by reading and filtering files 
-        in `data/contact_intervals`.
+- **Hypergraph-Based Interaction Modeling (Extension)**  
+  Modeling of **group interactions (≥ 3 entities)** to capture higher-order clinical dynamics beyond binary contacts.
 
-    - Module `code/showbadge.py` is a demonstration of reading iculayout 
-        and placement005 to produce one of the images used in the paper.   
+- **Exposure Risk Quantification**  
+  Identification of **high-risk healthcare providers (HCPs)** and spatial interaction hotspots within the MICU.
 
-    - Module `code/validation.py` includes code to validate the provided data
-        by visualizing the average number of active HCP badges during the day.
-        To run this module: `python code/validation.py` (required to run module
-        `make_histories.py` first)
+---
 
+## Analytical Perspective: Beyond Binary Contacts
+
+Traditional contact network analysis represents interactions as pairwise edges between individuals. While effective for simple proximity tracking, this approach underrepresents the complexity of ICU workflows.
+
+- **Pairwise Graph Models**  
+  Fragment simultaneous multi-person events into independent dyadic interactions.
+
+- **Dynamic Hypergraph Models**  
+  Represent **n-ary interactions** among multiple staff members and medical assets within the same temporal window, providing a higher-resolution and workflow-aware risk representation.
+
+---
+
+## Key Findings
+
+- **High-Risk Actors**  
+  A small subset of individuals (e.g., *pr045* and *pr037*) consistently act as transmission bridges, each participating in **over 50,000 group interaction events**.
+
+- **Spatial Interaction Bottlenecks**  
+  The **Main Corridor (b004)** and **Main Nurse Station (b143)** are identified as the most critical interaction hubs.
+
+- **Temporal Stability of Risk Patterns**  
+  Exposure risk rankings and spatial hotspots remain consistent across **10–11 of the 14 analyzed shifts**, indicating that risk is largely structural rather than stochastic.
+
+---
